@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: #fdf0d5;
+}
+
+#header {
+    background-image: url("images/Marblehead_Morning.jpg");
+    background-size: cover;
+    height: 343px;
+    padding-top: 119px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+#title {
+    background-color: #003049;
+    font-style: bold;
+    font-size: 32px;
+    padding: 4px 15px;
+    border-radius: 10px;
+   
+}
+#description {
+    background-color: #669bbc;
+    font-style: bold;
+    font-size: 17px;
+    width: 355px;
+    padding: 6px 30px;
+    border-radius: 10px;
+}
+#activities {
+    padding: 40px 0 ;
+    color: #003049;
+    background-color: #fdf0d5;
+}
+#three-activities {
+    display: flex;
+    flex-direction: row;
+
+}
+.section {
+    margin: auto;
+}
+
+.section-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+.section-title {
+    width: 182px;
+    margin: 0 auto;
+    font-style: bold;
+    font-size: 16px;
+    padding-top: 10px;
+}
+.section-description {
+    width: 200px;
+    height: 55px;
+    font-size: 16px;
+}
+#guide {
+    padding: 50px 0 50px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#hero {
+    background-color: #669bbc;
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    margin: 0 auto;
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 10px 0 #003049;
+}
+#profile-photo {
+    width: 180px;
+    height: 250px;
+    border-radius: 10px;
+}
+#profile {
+    padding-left: 16px
+}
+#profile-title {
+    font-style: bold;
+    font-size: 24px;
+}
+#profile-description {
+    font-style: italic;
+    font-size: 16px;
+} 
+#profile-name {
+    font-style: bold;
+    font-size: 16px;
+}
