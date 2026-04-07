@@ -1,0 +1,17 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# OS / local machine files
+.DS_Store
+.python-version
+
+# Editor local settings
+.vscode/settings.json

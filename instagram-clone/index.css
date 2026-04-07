@@ -1,0 +1,87 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 375px;
+}
+#logo {
+    height: 34px;
+    width: 127px;
+    margin-left: 15px;
+}
+#profile-pic {
+    height: 34px;
+    border-radius: 30px;
+    margin-right: 15px;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 375px;
+    height: 67px;
+    border-bottom: 1px solid #C6C6C6;
+}
+
+.post-header {
+    display: flex;
+    display: row;
+    height: 34px;
+    width: 348px;
+    margin: auto;
+    padding: 10px 0 0 0;
+}
+
+.post-profile {
+    height: 34px;
+    width: 34px;
+    border-radius: 34px;
+}
+
+.post-header-text {
+    display: block;
+    margin-left: 5px;
+}
+
+.post-title, .likes, .comment-id {
+    font-size: 13px;
+    font-weight: bold;
+    font-family: "Source Sans 3", sans-serif;
+    margin: 0;
+
+}
+.location {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 12px;
+    margin: 0;
+}
+.post-img {
+    height: 375px;
+    width: 375px;
+    margin-top: 15px;
+}
+.post-footer {
+    height: 78px;
+    width: 346px;
+    margin: 20px auto;
+}
+.icons {
+    margin-bottom: 10px;
+    height: 22px;
+    width: 104px;
+}
+.icon {
+    width: 22px;
+    height: 22px;
+}
+.comments {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.icon:hover {
+    opacity: .6;
+}
