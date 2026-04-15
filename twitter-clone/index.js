@@ -68,12 +68,16 @@ function handleReplyBtnClick(tweetId) {
         return tweet.uuid === tweetId;
     })[0];
     const text = document.getElementById(`reply-${tweetId}`);
-    targetTweetObj.replies.unshift({
-                handle: `@Scrimba`,
-                profilePic: `images/scrimbalogo.png`,
-                tweetText: text.value,
-            });
-    render();
+    if (text.value) {
+        targetTweetObj.replies.unshift({
+                    handle: `@Scrimba`,
+                    profilePic: `images/scrimbalogo.png`,
+                    tweetText: text.value,
+                });
+        render();
+        handleReplyClick(tweetId);
+    }
+    text.value = '';
 }
 
 function handleTweetBtnClick(){
