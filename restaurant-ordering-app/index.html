@@ -7,27 +7,58 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     </head>
     <body>
-            <section class="header">
-                <div class="header-text">
-                    <h1 id="restaurant-name">Jimmy's Diner</h1>
-                    <h2 id="restaurant-slogan">The best burgers and pizzas in town.</h2>
-                </div>
+        <div id="blur-overlay"></div>
+        <section class="header">
+            <div class="header-text">
+                <h1 id="restaurant-name">Jimmy's Diner</h1>
+                <h2 id="restaurant-slogan">The best burgers and pizzas in town.</h2>
+            </div>
 
-            </section>
-            <section id="food-options">
+        </section>
+        <section id="food-options">
 
-            </section>
-            <section id="your-order">
+        </section>
+        <section id="footer">
+            <div id="your-order">
                 <h3 id="order-title">Your Order</h3>
                 <div id="cart">
+                    <div id='selected-food'>
 
+                    </div>
                 </div>
                 <div id="order-summary">
                     <h3 id="summary-title">Total Price:</h3>
-                    <h3 id="total-price">$14</h3>
+                    <h3 id="total-price">0</h3>
                 </div>
                 <button id="order-btn">Complete Order</button>
-            </section>
+            </div>
+            <div id="order-success">
+                <h1 id="success-msg">Thanks James! Your order is on its way!</h1>
+                <button id="new-order">New Order</button>
+            </div>
+
+        </section>
+        <form id="checkout-form">
+            <div id="form-details">
+                <h1 id="form-title">Enter Card Details</h1>
+                <div id="input-fields">
+                    <input type="text" id="name-input" name='name-input' 
+                    class='form-input' placeholder="Enter your name" required>
+                    <input type="text" id="card-number-input" name='card-number-input'
+                    class='form-input' placeholder="Enter card number" 
+                    required pattern="\d{13,19}"
+                    oninvalid="this.setCustomValidity('Please enter a valid card number.')" >
+                    <input type="text" id="cvv-input" name='cvv-input'
+                    class='form-input' placeholder="Enter CVV" required
+                    pattern="[0-9]{3}"
+                    oninvalid="this.setCustomValidity('Please enter a valid CVV.')">
+                </div>
+
+                <button type="submit" id="submit-btn" >Pay</button>
+            </div>
+
+            
+        </form>
 	<script type="module" src="index.js"></script>
     </body>
 </html>

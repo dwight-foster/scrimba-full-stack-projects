@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: Smythe, sans-serif;
     width: 600px;
+    height: 1200px;
 
 } 
 h3 {
@@ -10,6 +11,19 @@ h3 {
 p {
     margin: 0;
 }
+
+#blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    background: rgba(255,255,255,0.2);
+    z-index: 100;
+    display: none;
+}
+
 .header {
     background-image: url('images/burger.jpg');
     background-size: cover;
@@ -69,6 +83,7 @@ i {
 }
 
 #your-order {
+    display: block;
     width: 508px;
     margin: 40px auto 0 auto;
 }
@@ -79,13 +94,16 @@ i {
     margin-bottom: 40px;
 }
 
-.selected-food {
-    display: flex;
-    justify-content: space-between;
+#selected-food {
+    display: block;
     padding-bottom: 20px;
     border-bottom: 2px solid #393333;
 }
-
+.selected-food-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
 .selected-food-left {
     display: flex;
     font-size: 28px;
@@ -102,6 +120,18 @@ i {
 
 .remove-btn:hover, .remove-btn:active {
     text-decoration: underline;
+}
+
+.selected-food-right {
+    display: flex;
+}
+.item-amount {
+    display: flex;
+    margin-right: 30px;
+}
+
+.add-item {
+    font-size: 20px;
 }
 
 #order-summary {
@@ -129,3 +159,86 @@ i {
     color: white;
     margin-bottom: 20px;
 }
+
+#order-success {
+    display: none;
+    flex-direction: column;
+    width: 504px;
+    height: 180px;
+    background-color: #ECFDF5;
+    margin: 50px auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    color: #065F46;
+}
+
+#new-order {
+    background-color: transparent;
+    border: 1px solid #065F46;
+    color:#065F46;
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+#new-order:hover, #new-order:active {
+    background-color: #17d797c6;
+}
+
+#checkout-form {
+    display: none;
+    position: fixed;
+    left: 38px;
+    top: 292px;
+    height: 542px;
+    width: 542px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px black;
+    z-index: 101;
+
+}
+#form-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #000000;
+}
+
+#input-fields {
+    display: block;
+    text-align: center;
+    margin: 50px 0 40px 0;
+
+}
+
+.form-input {
+    width: 475px;
+    height: 71px;
+    margin-bottom: 30px;
+    color: #757575;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    border: 1px solid #757575;
+    border-radius: 4px;
+    padding-left: 30px;
+}
+
+#submit-btn {
+    width: 475px;
+    height: 71px;
+    color: white;
+    background-color: #16DB99;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
