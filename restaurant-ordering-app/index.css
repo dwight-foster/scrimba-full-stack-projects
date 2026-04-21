@@ -124,14 +124,24 @@ i {
 
 .selected-food-right {
     display: flex;
+    align-items: center;
+
 }
 .item-amount {
     display: flex;
-    margin-right: 30px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
 }
 
 .add-item {
     font-size: 20px;
+    margin-right: 10px;
+}
+
+.subtract-item {
+    font-size: 20px;
+    margin-left: 10px;
 }
 
 #order-summary {
@@ -200,6 +210,11 @@ i {
     z-index: 101;
 
 }
+#exit {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
 #form-details {
     display: flex;
     flex-direction: column;
@@ -211,6 +226,7 @@ i {
     font-weight: bold;
     font-size: 24px;
     color: #000000;
+    margin-top: 0;
 }
 
 #input-fields {
@@ -223,7 +239,7 @@ i {
 .form-input {
     width: 475px;
     height: 71px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: #757575;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
@@ -240,5 +256,7 @@ i {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     font-size: 20px;
+    border-radius: 4px;
+    border: 0;
 }
 

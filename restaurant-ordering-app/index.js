@@ -1,6 +1,8 @@
 import { menuArray} from "./data.js";
 
 const checkoutForm = document.getElementById('checkout-form');
+const blurOverlay = document.getElementById('blur-overlay');
+const yourOrder = document.getElementById('your-order');
 const cart = {};
 menuArray.forEach(function(item) {
     cart[item.id] = 0;
@@ -35,25 +37,43 @@ document.addEventListener('click', function(e) {
             renderCart(cart, menuArray);
             break;
     }
+    switch(e.target.dataset.subtract) {
+        case "0":
+            cart[0] -= 1; 
+            renderCart(cart, menuArray);
+            break;
+        case "1":
+            cart[1] -= 1;
+            renderCart(cart, menuArray);
+            break;
+        case "2":
+            cart[2] -= 1;
+            renderCart(cart, menuArray);
+            break;
+    }
     
 });
 
 document.getElementById('order-btn').addEventListener('click', function() {
     if (cart[0] !== 0 || cart[1] !== 0 || cart[2] !== 0) {
         checkoutForm.style.display = 'block';
-        document.getElementById('blur-overlay').style.display = 'block';
+        blurOverlay.style.display = 'block';
     } 
 
 });
 
+document.getElementById('exit').addEventListener('click', function() {
+    checkoutForm.style.display = 'none';
+    blurOverlay.style.display = 'none';
+})
 
 checkoutForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const payForm = new FormData(checkoutForm);
     const name = payForm.get('name-input');
     checkoutForm.style.display = 'none';
-    document.getElementById('blur-overlay').style.display = 'none';
-    document.getElementById('your-order').style.display = 'none';
+    blurOverlay.style.display = 'none';
+    yourOrder.style.display = 'none';
     document.getElementById('order-success').style.display = 'flex';
     document.getElementById('success-msg').innerText = `Thanks ${name}! Your order is on its way!`
 });
@@ -63,7 +83,7 @@ document.getElementById('new-order').addEventListener('click', function() {
             cart[item.id] = 0;
     });
     document.getElementById('order-success').style.display = 'none';
-    document.getElementById('your-order').style.display = 'block';
+    yourOrder.style.display = 'block';
     renderCart(cart, menuArray);
 });
 
@@ -101,8 +121,9 @@ function renderCart(cart, items) {
                         </div>
                         <div class='selected-food-right'>
                             <div class="item-amount">
-                                <i class="fa-solid fa-plus add-item"></i>
+                                <i class="fa-solid fa-plus add-item" data-add="${id}"></i>
                                 <h3 class="item-amount-number">${cart[id]}</h3>
+                                <i class="fa-solid fa-minus subtract-item" data-subtract="${id}"></i>
                             </div>
                             <h3 class="selected-price">$${price * cart[id]}</h3>
                         </div>
