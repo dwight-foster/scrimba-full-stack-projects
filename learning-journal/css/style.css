@@ -1,0 +1,79 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+
+}
+
+html, 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    padding: 3.5em 2em;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 59px;
+}
+
+#left-header {
+    display: flex;
+    align-items: center;
+}
+
+#header-title {
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: Roboto, sans-serif;
+}
+
+#logo {
+
+    height: 90px;
+    width: 90px;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+
+}
+
+.nav-links {
+    font-family: "Source Sans 3", sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #090909;
+    font-size: 0.9rem;
+
+}
+
+#description {
+    display: flex;
+    flex-direction: column;
+    height: 414px;
+    width: 100vw;
+    background-image: url('../images/background.png');
+    background-size: cover;
+    padding: 0 2em 2em 2em;
+    color: #FFFFFF;
+    justify-content: flex-end;
+}
+
+#desc-date {
+    margin-bottom: 1em;
+}
+
+#desc-title {
+    margin: 0;
+    width: 80vw;
+    font-size: 2.5rem;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: bold;
+    line-height: 1;
+}
+
