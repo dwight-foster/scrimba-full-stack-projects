@@ -186,6 +186,10 @@ About Me Styling
     padding: 1em 2em;
 }
 
+#upper-section {
+    margin-bottom: 3em;
+}
+
 #profile {
     width: 30vw;
     border-radius: 50%;
@@ -204,7 +208,6 @@ About Me Styling
 #profile-desc {
     font-family: "Source Sans 3", sans-serif;
     margin-right: 1.5em;
-    margin-bottom: 3em;
 }
 
 .section-title {
@@ -227,4 +230,30 @@ About Me Styling
 .blog-title h3 {
     font-family: "Source Sans 3", sans-serif;
     font-weight: bold;
+}
+
+@media (min-width: 1028px) {
+    main {
+        padding: 0 1em;
+    }
+    #upper-section {
+        display: flex;
+        align-items: center;
+
+    }
+    #upper-section-text {
+        margin-left: 3em;
+    }
+    
+    #about-title {
+        margin-bottom: 0.25em;
+    }
+
+    #profile-desc {
+        margin-top: 0;
+    }
+
+    #lower-section {
+        padding: 0 3em 0 5em;
+    }
 }

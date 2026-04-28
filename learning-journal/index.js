@@ -4,19 +4,25 @@ const mediaQuery = window.matchMedia('(min-width: 1085px)');
 const blog = document.getElementById('blogs');
 const showMore = document.getElementById('show-more');
 
-function render (blogData, e) {
-    if (e.matches) {
+document.addEventListener('click', (e) => {
+    
+});
+
+function renderBlog (blogData, e) {
+    if (e.matches && window.location.pathname === "/learning-journal/index.html") {
       blogData = blogData.slice(0, 6);
     } else {
       blogData = blogData.slice(0, 3);
 
     }
-    console.log(mediaQuery.matches);
+    
     const htmlText = blogData.map(function (post) {
-        const {title, date, text, img} = post;
+        const {title, date, text, img, id, _} = post;
         return `
                 <div class="post">
-                    <img class="post-img" src="${img}">
+                    <a href="#" data-post="${id}">
+                      <img class="post-img" src="${img}">
+                    </a>
                     <div class="post-text">
                         <p class="post-date">${date}</p>
                         <h3 class="post-title">${title}</h3>
@@ -34,8 +40,13 @@ function render (blogData, e) {
     }
 }
 
-render(blogData, mediaQuery);
+function renderPost (blogPost) {
+    
+
+}
+
+renderBlog(blogData, mediaQuery);
 
 mediaQuery.addEventListener('change', (e) => {
-  render(blogData, e);
+  renderBlog(blogData, e);
 });
