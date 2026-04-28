@@ -9,27 +9,28 @@ body {
     padding: 0;
 }
 
+
 header {
     display: flex;
     padding: 3.5em 2em;
     align-items: center;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     height: 59px;
 }
 
-#left-header {
+.left-header {
     display: flex;
     align-items: center;
 }
 
-#header-title {
+.header-title {
     font-weight: bold;
     font-size: 1rem;
     font-family: Roboto, sans-serif;
 }
 
-#logo {
+.logo {
 
     height: 90px;
     width: 90px;
@@ -56,7 +57,7 @@ ul {
     display: flex;
     flex-direction: column;
     height: 414px;
-    width: 100vw;
+    width: 100%;
     background-image: url('../images/background.png');
     background-size: cover;
     padding: 0 2em 2em 2em;
@@ -65,6 +66,8 @@ ul {
 }
 
 #desc-date {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1rem;
     margin-bottom: 1em;
 }
 
@@ -77,3 +80,151 @@ ul {
     line-height: 1;
 }
 
+#desc-text {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1.15rem;
+}
+
+#blogs {
+    text-align: center;
+}
+
+#no-posts {
+    font-family: "Source Sans 3", sans-serif;
+    color: #000000;
+}
+
+.post {
+    width: 100%;
+    padding: 2em;
+   
+}
+
+.post-img {
+    width: 100%;
+    height: 30%;
+    object-fit: cover;
+    display: block;
+    border-radius: 3px;
+}
+
+.post-date {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1rem;
+    margin-bottom: 3px;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+.post-title {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.post-desc {
+    font-family: "Source Sans 3", sans-serif;
+    margin-top: 3px;
+    color: #505050;
+}
+
+#show-more {
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+#show-more a {
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #000000;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #202020;
+    text-align: center;
+    justify-content: center;
+    height: 105px;
+}
+
+footer h3 {
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #ECECEC;
+    margin-bottom: 0;
+}
+
+footer p {
+    font-family: "Source Sans 3", sans-serif;
+    color: #D7D7D7;
+    margin-top: 0;
+}
+
+@media (min-width: 1085px) {
+    #blogs {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        
+    }
+    .post-img {
+        height: 180px; 
+
+    }
+
+}
+
+
+/*
+About Me Styling
+*/ 
+
+#about-section {
+    padding: 1em 2em;
+}
+
+#profile {
+    width: 30vw;
+    border-radius: 50%;
+
+}
+
+#about-title {
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-right: 1.5em;
+    margin-top: 1em;
+    color: #151515;
+}
+
+#profile-desc {
+    font-family: "Source Sans 3", sans-serif;
+    margin-right: 1.5em;
+    margin-bottom: 3em;
+}
+
+.section-title {
+    margin-top: 1.5em;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: bold;
+    color: #151515;
+}
+
+.section-text {
+    font-family: "Source Sans 3", sans-serif;
+
+}
+
+.blog-title {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.blog-title h3 {
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: bold;
+}
