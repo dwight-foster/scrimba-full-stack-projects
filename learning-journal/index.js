@@ -1,9 +1,17 @@
 import {blogData} from './data.js';
 
 const mediaQuery = window.matchMedia('(min-width: 1085px)');
+const blog = document.getElementById('blogs');
+const showMore = document.getElementById('show-more');
 
+function render (blogData, e) {
+    if (e.matches) {
+      blogData = blogData.slice(0, 6);
+    } else {
+      blogData = blogData.slice(0, 3);
 
-function render (blogData) {
+    }
+    console.log(mediaQuery.matches);
     const htmlText = blogData.map(function (post) {
         const {title, date, text, img} = post;
         return `
@@ -18,16 +26,16 @@ function render (blogData) {
                 </div>
         `;
     }).join('');
-    document.getElementById('blogs').innerHTML = htmlText;
-    document.getElementById('show-more').innerHTML = '<a href="#">View More<a>'
+    if (blog) {
+      blog.innerHTML = htmlText;
+    }
+    if (showMore) {
+      showMore.innerHTML = '<a href="#">View More<a>'
+    }
 }
 
-render(blogData);
+render(blogData, mediaQuery);
 
 mediaQuery.addEventListener('change', (e) => {
-  if (e.matches) {
-    render(blogData.slice(0, 6));
-  } else {
-    render(blogData.slice(0,3));
-  }
+  render(blogData, e);
 });
