@@ -65,13 +65,13 @@ ul {
     justify-content: flex-end;
 }
 
-#desc-date {
+.desc-date {
     font-family: "Source Sans 3", sans-serif;
     font-size: 1rem;
     margin-bottom: 1em;
 }
 
-#desc-title {
+.desc-title {
     margin: 0;
     width: 80vw;
     font-size: 2.5rem;
@@ -80,7 +80,7 @@ ul {
     line-height: 1;
 }
 
-#desc-text {
+.desc-text {
     font-family: "Source Sans 3", sans-serif;
     font-size: 1.15rem;
 }
@@ -255,5 +255,45 @@ About Me Styling
 
     #lower-section {
         padding: 0 3em 0 5em;
+    }
+}
+
+/*
+Post Page
+*/
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.title-section {
+   width: 90vw;
+}
+
+.title-img {
+    display: block;
+    margin: 0 auto;
+    width: 90vw;
+}
+
+.post-body {
+    width: 90vw;
+}
+
+@media (min-width: 1028px) {
+    .title-section {
+        width: 80vw;
+    }
+
+    .post-body {
+        width: 80vw;
     }
 }

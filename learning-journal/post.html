@@ -1,0 +1,50 @@
+    <html>
+        <head>
+            <title>My Learning Journal</title>
+            <link rel="stylesheet" href="css/style.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+        </head>
+        <body>
+            <header>
+                <div class="left-header">
+                    <img src="images/logo.png" class="logo">
+                    <h1 class="header-title">My Learning Journal</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a class="nav-links" href="index.html">Home</a></li>
+                        <li><a class="nav-links" href="about.html">About Me</a></li>
+                    </ul>
+                </nav>
+                
+            </header>
+            <main>
+                <div id="post">
+
+
+                </div>
+                <div class="blog-title">
+                    <h3>Recent Posts</h3>
+                </div>
+                <div id="blogs">
+
+                </div>
+            </main>
+            <footer>
+                <h3>My Learning Journal</h3>
+                <p>Copyright ©2026</p>
+            </footer>
+            <script type="module">
+                import { blogData } from './data.js';
+                import {renderPost} from './index.js';
+
+                const postId = localStorage.getItem('selectedPostId');
+                const blogPost = blogData.find(post => post.id === Number(postId));
+                if (blogPost) {
+                    renderPost(blogPost); // Use your existing renderPost function
+                }
+            </script>
+        </body>
+    </html>
