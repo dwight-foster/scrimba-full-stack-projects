@@ -1,0 +1,212 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 208px;
+    width: 100%;
+    background-color: #343434;
+    background-image: url('images/header.jpg');
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position-y: -150px;
+    padding: 2.5em;
+}
+
+.header-text {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    color: #FFFFFF;
+    font-family: "Inter", sans-serif;
+
+}
+
+.header-text h1 {
+    font-weight: bolder;
+    font-size: 2.5rem;
+}
+
+.header-text a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+form {
+    display: flex;
+    position: absolute;
+    top: 189px;
+    width: 80%;
+    color: #616161;
+}
+
+.input-wrapper {
+    width: 80%;
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 16px;
+    top: 12px;
+}
+
+form input {
+    height: 38px;
+    font-size: 1rem;
+    border: 1px solid #E0E0E0;
+    padding-left: 2em;
+    width: 100%;
+    border-radius: 6px 0 0 6px;
+}
+
+form button {
+    height: 38px;
+    width: 20%;
+    border: 1px solid #E0E0E0;
+    background-color: #FAFAFA;
+    font-size: 1rem;
+    border-radius: 0 6px 6px 0;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+#movies, #watchlist-movies {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 4.5em;
+}
+
+.empty-movies {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #DFDDDD;
+}
+
+.empty-movies i {
+    font-size: 4rem;
+}
+
+.empty-movies h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+.add-movies {
+    display: flex;
+    color: #363636;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 0.875rem;
+    gap: 5px;
+}
+
+#return-add {
+    background-color: transparent;
+    border: none;
+}
+
+#return-add i {
+    font-size: 2rem;
+}
+
+.movie {
+    display: flex;
+    width: 80%;
+    height: 18vh;
+    margin: 0 auto;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.movie-img {
+    width: 20vw;
+    height: 15vh;
+    border: 1px solid black;
+}
+
+.movie-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+    font-family: "Inter", sans-serif;
+
+}
+
+.top-text {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin: 1em 0 1em 0;
+}
+
+.top-text h2 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+.top-text p {
+    font-size: 0.75rem;
+    color: #111827;
+}
+
+.top-text p i {
+    margin-right: 5px;
+}
+
+.middle-text {
+    display: flex;
+    gap: 2em;
+    margin: 0;
+    align-items: center;
+}
+
+.middle-text p {
+    font-size: 0.875rem;
+    color: #111827;
+}
+
+.middle-text button {
+    background-color: transparent;
+    border: none;
+    font-size: 0.75rem;
+}
+
+.middle-text button i {
+    margin-right: 5px;
+    font-size: 1rem;
+}
+
+.middle-text *, .top-text * {
+    margin: 0;
+}
+
+.description {
+    margin-top: 0.75em;
+    font-size: 0.875rem;
+    color: #6B7280;
+}

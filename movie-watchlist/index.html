@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <div ></div>
+            <div class="header-text">
+                <h1>Find your film</h1>
+                <a href="watchlist.html">My Watchlist</a>
+            </div>
+            <form id="search">
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="search-bar" type="text" placeholder="Search for a movie">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </header>
+        <main>
+            <div id="movies">
+<!--                 <div class="empty-movies">
+                    <i class="fa-solid fa-film"></i>
+                    <h2>Start Exploring</h2>
+                </div> -->
+                <div class="movie">
+                    <div class="movie-img">
+
+                    </div>
+                    <div class="movie-text">
+                        <div class="top-text">
+                            <h2>Blade Runner</h2> 
+                            <p><i class="fa-regular fa-star"></i>8.1</p>
+                        </div>
+                        <div class="middle-text">
+                            <p>117 min</p>
+                            <p>Action, Drama, Sci-fi</p>
+                            <button><i class="fa-solid fa-circle-plus"></i>Watchlist</button>
+                        </div>
+                        <p class="description">
+                            A blade runner must pursue and terminate four replicatants who stole a ship in space.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        <script src="index.js"></script>
+    </body>
+</html>
