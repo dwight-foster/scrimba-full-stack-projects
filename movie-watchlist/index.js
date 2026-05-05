@@ -2,11 +2,93 @@
 
 const searchBar = document.getElementById('search-bar');
 const searchForm = document.getElementById('search');
+const movies = document.getElementById('movies');
+const watchlistMovies = document.getElementById('watchlist-movies');
+let currentMovies = [];
+localStorage.setItem('watchlist', JSON.stringify([]));
 
-searchForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const searchVal = searchBar.value;
-    const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=2ebba396&s=${searchVal}`);
-    const data = await res.json();
-    console.log(data);
+if (searchForm) {
+    searchForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const searchVal = searchBar.value;
+        const res = await fetch(`http://www.omdbapi.com/?apikey=2ebba396&s=${searchVal}`);
+        const data = await res.json();
+        currentMovies = data.Search.slice(0,5);
+        const htmlText = await Promise.all(data.Search.slice(0,5).map(async (movie) => {
+            const id = movie.imdbID;
+            const res = await fetch(`http://www.omdbapi.com/?apikey=2ebba396&i=${id}`);
+            const data = await res.json();
+            return `
+                    <div class="movie">
+                        <img class="movie-img" src="${data.Poster}">
+                        <div class="movie-text">
+                            <div class="top-text">
+                                <h2>${data.Title}</h2> 
+                                <p><i class="fa-regular fa-star"></i>${data.imdbRating}/p>
+                            </div>
+                            <div class="middle-text">
+                                <p>${data.Runtime}</p>
+                                <p>${data.Genre}</p>
+                                <button><i class="fa-solid fa-circle-plus" data-add="${id}"></i>Watchlist</button>
+                            </div>
+                            <p class="description">
+                                ${data.Plot}
+                            </p>
+                        </div>
+
+                    </div>
+            `
+        }));
+        movies.innerHTML = htmlText.join('');
+    }) 
+}
+
+document.addEventListener('click', (e) => {
+    console.log(e.target.dataset.add)
+    if (e.target.dataset.add) {
+        const movie = currentMovies.filter((m) => {
+            return m.imdbID === e.target.dataset.add;
+            
+        });
+        const watchlist = JSON.parse(localStorage.getItem('watchlist'));
+        watchlist.push(movie);
+        localStorage.setItem('watchlist', JSON.stringify(watchlist));
+
+    }
 })
+
+function renderWatchlist(movies) {
+    if (movies.length > 0) {
+        const htmlText = movies.map((movie) => {
+            return `
+                        <div class="movie">
+                            <img class="movie-img" src="${movie.Poster}">
+                            <div class="movie-text">
+                                <div class="top-text">
+                                    <h2>${movie.Title}</h2> 
+                                    <p><i class="fa-regular fa-star"></i>${movie.imdbRating}/p>
+                                </div>
+                                <div class="middle-text">
+                                    <p>${movie.Runtime}</p>
+                                    <p>${movie.Genre}</p>
+                                    <button><i class="fa-solid fa-circle-minus" data-remove="${movie.imdbID}"></i></i>Remove</button>
+                                </div>
+                                <p class="description">
+                                    ${movie.Plot}
+                                </p>
+                            </div>
+
+                        </div>
+                `
+        }).join('');
+        watchlistMovies.innerHTML = htmlText;
+    }
+
+
+}
+
+if (watchlistMovies) {
+    const watchlist = JSON.parse(localStorage.getItem('watchlist'));
+    console.log(watchlist);
+    renderWatchlist(watchlist);
+}

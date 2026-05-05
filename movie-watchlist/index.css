@@ -88,10 +88,12 @@ form button {
 
 main {
     flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 #movies, #watchlist-movies {
-    height: 100%;
+    flex: 1 0 auto;
     display: grid;
     grid-template-columns: 1fr;
     margin-top: 4.5em;
@@ -145,7 +147,6 @@ main {
 .movie-img {
     width: 20vw;
     height: 15vh;
-    border: 1px solid black;
 }
 
 .movie-text {
@@ -199,6 +200,7 @@ main {
 .middle-text button i {
     margin-right: 5px;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .middle-text *, .top-text * {
