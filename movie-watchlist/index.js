@@ -5,7 +5,11 @@ const searchForm = document.getElementById('search');
 const movies = document.getElementById('movies');
 const watchlistMovies = document.getElementById('watchlist-movies');
 let currentMovies = [];
-localStorage.setItem('watchlist', JSON.stringify([]));
+
+
+if (!localStorage.getItem('watchlist')) {
+    localStorage.setItem('watchlist', JSON.stringify([]));
+}
 
 if (searchForm) {
     searchForm.addEventListener('submit', async (e) => {
@@ -13,11 +17,12 @@ if (searchForm) {
         const searchVal = searchBar.value;
         const res = await fetch(`http://www.omdbapi.com/?apikey=2ebba396&s=${searchVal}`);
         const data = await res.json();
-        currentMovies = data.Search.slice(0,5);
-        const htmlText = await Promise.all(data.Search.slice(0,5).map(async (movie) => {
+        currentMovies = []
+        const htmlText = await Promise.all(data.Search.slice(0, 6).map(async (movie) => {
             const id = movie.imdbID;
             const res = await fetch(`http://www.omdbapi.com/?apikey=2ebba396&i=${id}`);
             const data = await res.json();
+            currentMovies.push(data);
             return `
                     <div class="movie">
                         <img class="movie-img" src="${data.Poster}">
@@ -29,7 +34,7 @@ if (searchForm) {
                             <div class="middle-text">
                                 <p>${data.Runtime}</p>
                                 <p>${data.Genre}</p>
-                                <button><i class="fa-solid fa-circle-plus" data-add="${id}"></i>Watchlist</button>
+                                <button id="add"><i class="fa-solid fa-circle-plus" data-add="${id}"></i>Watchlist</button>
                             </div>
                             <p class="description">
                                 ${data.Plot}
@@ -40,19 +45,40 @@ if (searchForm) {
             `
         }));
         movies.innerHTML = htmlText.join('');
+        console.log(currentMovies);
     }) 
 }
 
 document.addEventListener('click', (e) => {
-    console.log(e.target.dataset.add)
+    const addButton = document.getElementById('add');
     if (e.target.dataset.add) {
         const movie = currentMovies.filter((m) => {
             return m.imdbID === e.target.dataset.add;
             
         });
         const watchlist = JSON.parse(localStorage.getItem('watchlist'));
-        watchlist.push(movie);
+        watchlist.push(movie[0]);
         localStorage.setItem('watchlist', JSON.stringify(watchlist));
+        console.log(addButton);
+        if (addButton) {
+            addButton.innerHTML = `<i class="fa-solid fa-circle-minus" data-remove="${movie[0].imdbID}"></i>Remove`;
+        }
+
+    }
+    if (e.target.dataset.remove) {
+        let watchlist = JSON.parse(localStorage.getItem('watchlist'));
+        watchlist = watchlist.filter((m) => {
+            return m.imdbID !== e.target.dataset.remove;
+            
+        });
+        console.log(watchlist);
+        localStorage.setItem('watchlist', JSON.stringify(watchlist));
+        if (addButton) {
+            addButton.innerHTML = `<i class="fa-solid fa-circle-plus" data-add="${e.target.dataset.remove}"></i>Watchlist`;
+        }
+        if (watchlistMovies) {
+            renderWatchlist(watchlist);
+        }
 
     }
 })
@@ -66,12 +92,12 @@ function renderWatchlist(movies) {
                             <div class="movie-text">
                                 <div class="top-text">
                                     <h2>${movie.Title}</h2> 
-                                    <p><i class="fa-regular fa-star"></i>${movie.imdbRating}/p>
+                                    <p><i class="fa-regular fa-star"></i>${movie.imdbRating}</p>
                                 </div>
                                 <div class="middle-text">
                                     <p>${movie.Runtime}</p>
                                     <p>${movie.Genre}</p>
-                                    <button><i class="fa-solid fa-circle-minus" data-remove="${movie.imdbID}"></i></i>Remove</button>
+                                    <button><i class="fa-solid fa-circle-minus" data-remove="${movie.imdbID}"></i>Remove</button>
                                 </div>
                                 <p class="description">
                                     ${movie.Plot}
@@ -82,6 +108,17 @@ function renderWatchlist(movies) {
                 `
         }).join('');
         watchlistMovies.innerHTML = htmlText;
+    } else {
+        watchlistMovies.innerHTML = `
+                                    <div class="empty-movies">
+                                        <h2>Your watchlist is looking a little empty...</h2>
+                                        <div class="add-movies">
+                                            <button id="return-add"><i class="fa-solid fa-circle-plus"></i></button>
+                                            <p>Let's add some movies!</p>
+                                        </div>
+
+                                    </div>`;
+
     }
 
 
