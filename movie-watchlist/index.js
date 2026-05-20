@@ -1,4 +1,3 @@
-//  http://www.omdbapi.com/?i=tt3896198&apikey=2ebba396
 
 const searchBar = document.getElementById('search-bar');
 const searchForm = document.getElementById('search');
@@ -15,12 +14,12 @@ if (searchForm) {
     searchForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const searchVal = searchBar.value;
-        const res = await fetch(`http://www.omdbapi.com/?apikey=2ebba396&s=${searchVal}`);
+        const res = await fetch(`http://www.omdbapi.com/?apikey=APIKEY=${searchVal}`);
         const data = await res.json();
         currentMovies = []
         const htmlText = await Promise.all(data.Search.slice(0, 6).map(async (movie) => {
             const id = movie.imdbID;
-            const res = await fetch(`http://www.omdbapi.com/?apikey=2ebba396&i=${id}`);
+            const res = await fetch(`http://www.omdbapi.com/?apikey=APIKEY&i=${id}`);
             const data = await res.json();
             currentMovies.push(data);
             return `
