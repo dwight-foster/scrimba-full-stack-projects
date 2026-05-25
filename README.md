@@ -11,3 +11,4 @@ This is a repository with my solo projects from the Scrimba Full Stack Path.
 - Color Scheme Generator (APIs and Async JS)
 - Movie Watchlist (APIs and Async JS)
 - Animation Async (MDN Async Tutorial: [Here](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Async_JS/Sequencing_animations))
+- GoldDigger (Node.js)
