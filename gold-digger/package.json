@@ -1,0 +1,12 @@
+{
+  "name": "gold-digger",
+  "version": "1.0.0",
+  "description": "Watch the price of gold and chooose when to buy it. ",
+  "license": "ISC",
+  "author": "Dwight Foster",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
