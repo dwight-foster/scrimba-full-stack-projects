@@ -1,7 +1,6 @@
 import http from 'node:http';
 import { serveStatic } from './utils/serveStatic.js';
 import { handleGoldPrice, handlePost, handleGenerate } from './handlers/routeHandlers.js';
-import { investEvents } from './event/investEvents.js';
 import { wipeTXT } from './utils/wipeTXT.js';
 
 const PORT = 8000;

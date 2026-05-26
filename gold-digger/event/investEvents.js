@@ -1,6 +1,6 @@
 import { EventEmitter } from 'node:events';
-import { saveInvestments } from '../utils/saveInvestments.js';
+import { sendEmail } from '../utils/sendEmail.js';
 
-export const investEvents = new EventEmitter();
+export const emailEvents = new EventEmitter();
 
-investEvents.addListener('investment-made', saveInvestments);
+emailEvents.addListener('investment-made', sendEmail);

@@ -1,8 +1,9 @@
 import { getGoldPrice } from '../utils/getGoldPrice.js';
 import { parseJSONBody } from '../utils/parseJSONBody.js';
-import { investEvents } from '../event/investEvents.js';
+import { emailEvents } from '../event/investEvents.js';
 import { sendResponse } from '../utils/sendResponse.js';
 import { generatePDF } from '../utils/generatePDF.js';
+import { saveInvestments } from '../utils/saveInvestments.js';
 
 export async function handleGoldPrice(req, res) {
     res.statusCode = 200;
@@ -24,7 +25,8 @@ export async function handleGoldPrice(req, res) {
 export async function handlePost(req, res) {
     try {
         const data = await parseJSONBody(req);
-        investEvents.emit('investment-made', data);
+        emailEvents.emit('investment-made', data);
+        await saveInvestments(data);
         sendResponse(res, 201, 'application/json', JSON.stringify(data));
     } catch (err) {
         sendResponse(res, 400, 'application/json', JSON.stringify({error: err}));
