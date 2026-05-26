@@ -17,10 +17,10 @@
 <body>
     <main>
         <h1 class="title">GoldDigger</h1>
-        <img src="gold.png" alt="gold bars and nuggets">
+        <img src="./gold.png" alt="gold bars and nuggets">
         <section class="price-info-container">
             <p>£<span id="price-display" class="price" aria-live="assertive">----.--</span> / Oz*</p>
-            <p id="connection-status" class="status" aria-live="polite">Live Price 🟢</p>
+            <p id="connection-status" class="status" aria-live="polite">Disconnected 🔴</p>
         </section>
         <form id="invest-form">
             <label for="investment-amount">Amount to invest</label>
@@ -36,6 +36,10 @@
             <p id="investment-summary">You just bought 1.3 ounces (ozt) for £3000. \n You will receive documentation shortly.</p>
             <button id='close-dialog' aria-label="Close dialog and return to main page" autofocus>OK</button>
         </dialog>
+        <div class="transactions-container">
+            <p class="transactions">Transactions: <span id="num-transactions">0</span></p>
+            <button id='generate-pdf'>Generate PDF</button>
+        </div>
         <p class="footnote">* 1oz = 1 troy ounce of 24 Carat Gold</p>
     </main>
     <script type="module" src="index.js"></script>

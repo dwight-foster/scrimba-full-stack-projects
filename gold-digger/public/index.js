@@ -6,12 +6,18 @@ const investForm = document.getElementById('invest-form');
 const investmentSummary = document.getElementById('investment-summary');
 const closeDialog = document.getElementById('close-dialog');
 const investmentAmount = document.getElementById('investment-amount')
+const connectionStatus = document.getElementById('connection-status');
+const generatePDF = document.getElementById('generate-pdf');
+const numTransactions = document.getElementById('num-transactions');
 
 
 eventSource.onmessage = (event) => {
     const data = JSON.parse(event.data);
     const price = data.price;
     priceDisplay.innerText = price;
+    if (connectionStatus.innerText !== 'Live Price 🟢') {
+        connectionStatus.innerText = 'Live Price 🟢';
+    }
 }
 
 eventSource.onerror = () => {
@@ -41,7 +47,20 @@ investForm.addEventListener('submit', (e) => {
     investmentAmount.value = '';
     investmentSummary.innerText= `You just bought ${goldAmount} ounces (ozt) for £${investAMNT}. \n You will receive documentation shortly.`;
     investmentSummary.parentElement.showModal();
-    console.log(investmentSummary.childNodes);
+    numTransactions.innerText = 1 + Number(numTransactions.innerText);
+    
 })
 
 closeDialog.addEventListener('click', () => investmentSummary.parentElement.close());
+
+generatePDF.addEventListener('click', () => {
+    if (numTransactions.innerText !== "0") {
+        fetch('./api/generate', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({type: 'pdf'})
+        });
+    }
+})
