@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </head>
+    <body>
+        <main>
+            <div class="body">
+                <div class="tickers">
+                    <div id="ticker-display">
+
+                    </div>
+                    <button title="Add Ticker" id="add-ticker"><i class="fa-solid fa-circle-plus"></i></button>
+                </div>
+                <div class="primary">
+                    <div class="primary-left">
+                        <p id="author"></p>
+                    </div>
+                    <div class="primary-center">
+                        <h1 id="time"></h1>
+                    
+                        <form method="get" action="https://www.google.com/search">
+                            <input placeholder="Ask Google" class="search" type="text" name="q" size="31" value="">
+                        </form>
+                        <div class="news">
+                            <h1>Top Headlines</h1>
+                            <div id="headlines">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="primary-right">
+                        <div id="weather">
+                        </div>
+                        <p id="city">Boston</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>

@@ -1,0 +1,202 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: no-repeat center center fixed;
+    background-size: cover;
+}
+
+div.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+div.tickers {
+    width: 80vw;
+    display: flex;
+    padding-top: 10px;
+}
+
+div#ticker-display {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 2.5em;
+    background-color: #000000;
+    align-items: center;
+    box-shadow: 0 0 1px white; 
+
+
+}
+
+div.scroller {
+  display: flex;
+  width: 100%;
+
+}
+
+div.scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+    mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+}
+
+
+ul.scroller__inner {
+    display: flex;
+    gap: 1rem;
+    list-style-type: none;
+    flex-wrap: wrap;
+}
+
+div.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    will-change: transform;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-1 * var(--scroll-distance, 50%)));
+    }
+}
+
+li.ticker {
+    min-width: fit-content;
+}
+
+
+.red {
+    color: #F28B82;
+}
+
+.green {
+    color: #C4EED0;
+}
+
+button#add-ticker {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 2.5rem;
+    margin-left: 30px;
+}
+
+button#add-ticker > i {
+    background-color: lightgray;
+    border-radius: 80%;
+    box-shadow: 0 0 1px white;
+}
+
+button#add-ticker > i:hover, button#add-ticker > i:active {
+    background-color: gray;
+    
+}
+
+div.primary {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-top: 35vh;
+    justify-content: space-between;
+}
+
+div.primary-left {
+    margin: auto 0 0 1em;
+    color:#FFFFFF;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+div.primary-center {
+    text-align: center;
+}
+
+h1#time {
+    font-size: 4rem;
+    font-weight: normal;
+    color: #FFFFFF;
+    margin-bottom: 0.5em;
+}
+
+
+input.search {
+    border: 1px solid lightgray;
+    border-radius: 30px;
+    width: 40vw;
+    height: 2.5em;
+    padding: 1em;
+}
+
+div.news {
+    width: 40vw;
+    height: 35vh;
+    background: rgb(255, 255, 255, 0.5);
+    border-radius: 20px;
+    margin-top: 2em;
+    overflow-y:scroll;
+    scrollbar-width: thin;
+
+}  
+
+div.news > h1 {
+    padding-top: 10px;
+    font-size: 2rem;
+}
+
+div#headlines {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+div#headlines > a {
+    color: #2A2AE6;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+div.primary-right {
+    margin: auto 30px 10px 0;
+    align-items: center;
+    text-align: center;
+}
+
+div.primary-right > div {
+    display: flex;
+    align-items: center;
+   
+}
+
+div.primary-right > div > img {
+    height: 70px;
+    width: 70px;
+}
+
+div.primary-right > div > p {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 1px rgb(77, 77, 77);
+}
+
+div.primary-right > p {
+    margin-top: -10px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 0 0 1px rgb(77, 77, 77);
+
+}
