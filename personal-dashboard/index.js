@@ -3,6 +3,8 @@ import { stocks } from "./stocks.js";
 const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature");
 const data = await res.json();
 const scrollers = document.querySelectorAll('.scroller');
+const addTicker = document.getElementById('add-ticker');
+const tickerForm = document.getElementById('ticker-form');
 const token = "YOUR_API_TOKEN";
 
 document.body.style.backgroundImage = `url(${data.urls.raw})`;
@@ -91,3 +93,9 @@ async function getNewsData() {
 }
 
 setInterval(getNewsData(), 300000);
+
+addTicker.addEventListener('click', () => {
+  console.log(tickerForm.style.display);
+  tickerForm.style.display = 'flex';
+  
+});

@@ -85,23 +85,58 @@ li.ticker {
     color: #C4EED0;
 }
 
+
 button#add-ticker {
     background: none;
     border: none;
     padding: 0;
     font-size: 2.5rem;
-    margin-left: 30px;
+    margin-left: 4vw;
 }
 
 button#add-ticker > i {
     background-color: lightgray;
     border-radius: 80%;
     box-shadow: 0 0 1px white;
+    cursor: pointer;
 }
 
 button#add-ticker > i:hover, button#add-ticker > i:active {
     background-color: gray;
     
+}
+
+form#ticker-form {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 8vw;
+    padding: 0.5rem 0;
+    border-radius: 5px;
+    margin-left: 1vw;
+}
+
+form#ticker-form input {
+    margin-bottom: 2rem;
+    border: 1px solid lightgray;
+    padding-left: 0.25rem;
+    border-radius: 5px;
+    width: 80%;
+}
+
+form#ticker-form button {
+    background-color: white;
+    color: black;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 40%;
+}
+
+form#ticker-form button:hover {
+    background-color: rgba(211, 211, 211, 0.517);
 }
 
 div.primary {
