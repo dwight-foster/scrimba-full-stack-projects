@@ -13,7 +13,7 @@ body {
     background-size: cover;
 }
 
-div.body {
+div.main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -144,7 +144,7 @@ div.primary {
     display: flex;
     width: 100%;
     height: 100%;
-    margin-top: 35vh;
+    margin-top: 30vh;
     justify-content: space-between;
 }
 
