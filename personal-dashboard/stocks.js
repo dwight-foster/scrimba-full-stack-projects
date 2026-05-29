@@ -1,1 +1,0 @@
-export let stocks = ['aapl', 'spy', 'msft', 'tsla','qqq', 'nvda', 'govt', 'amzn', 'goog', 'brk.b', 'meta', 'iyy', 'wmt', 'ba'];

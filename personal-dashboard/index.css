@@ -56,14 +56,15 @@ ul.scroller__inner {
     display: flex;
     gap: 1rem;
     list-style-type: none;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    width: max-content;
 }
 
 div.scroller[data-animated="true"] .scroller__inner {
-    width: max-content;
-    flex-wrap: nowrap;
     will-change: transform;
-    animation: scroll 20s linear infinite;
+    animation: scroll 40s linear infinite;
 }
 
 @keyframes scroll {
@@ -170,8 +171,9 @@ input.search {
     border: 1px solid lightgray;
     border-radius: 30px;
     width: 40vw;
-    height: 2.5em;
+    height: 3em;
     padding: 1em;
+    font-size: 1.25rem;
 }
 
 div.news {

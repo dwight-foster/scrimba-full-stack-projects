@@ -1,11 +1,22 @@
-import { stocks } from "./stocks.js";
 
 const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature");
 const data = await res.json();
 const scrollers = document.querySelectorAll('.scroller');
 const addTicker = document.getElementById('add-ticker');
 const tickerForm = document.getElementById('ticker-form');
-const token = "YOUR_API_TOKEN";
+const tickerInput = document.getElementById('ticker-input');
+const token = "YOUR_API_KEY";
+
+let stocks;
+console.log(localStorage.getItem('stocks'));
+if (localStorage.getItem('stocks')) {
+  stocks = JSON.parse(localStorage.getItem('stocks'));
+} else {
+  stocks = ['aapl', 'spy', 'msft', 'tsla','qqq', 'nvda', 'govt', 'amzn', 'goog', 'brk.b', 'meta', 'iyy', 'wmt', 'ba'];
+  localStorage.setItem('mySavedList', JSON.stringify(stocks));
+}
+
+
 
 document.body.style.backgroundImage = `url(${data.urls.raw})`;
 document.getElementById('author').innerText = data.user.name;
@@ -48,10 +59,12 @@ async function getStockData(tickers) {
     }
   });
   htmlString += '</ul></div>';
-
   document.getElementById('ticker-display').innerHTML = htmlString;
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    addAnimation();
+    if (document.fonts) {
+      await document.fonts.ready;
+    }
+    requestAnimationFrame(addAnimation);
   }
 }
 
@@ -75,7 +88,8 @@ function addAnimation() {
   });
 }
 
-setInterval(getStockData(stocks), 60000);
+getStockData(stocks);
+setInterval(() => getStockData(stocks), 60000);
 
 async function getNewsData() {
   try {
@@ -92,10 +106,24 @@ async function getNewsData() {
 
 }
 
-setInterval(getNewsData(), 300000);
+getNewsData();
+setInterval(getNewsData, 300000);
 
 addTicker.addEventListener('click', () => {
   console.log(tickerForm.style.display);
-  tickerForm.style.display = 'flex';
+  if (tickerForm.style.display !== 'flex') {
+      tickerForm.style.display = 'flex';
+  } else {
+    tickerForm.style.display = 'none';
+  }
   
 });
+
+tickerForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const ticker = tickerInput.value.toUpperCase();
+  tickerInput.value = '';
+  stocks.push(ticker);
+  localStorage.setItem('stocks', JSON.stringify(stocks));
+
+})

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8"/>
         <link rel="stylesheet" href="index.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -8,46 +9,39 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     </head>
     <body>
-        <main>
+        <main aria-label="Personal Dashboard Main Content">
             <div class="body">
-                <div class="tickers">
-                    <div id="ticker-display">
-
+                <div class="tickers" aria-label="Stock Tickers Section">
+                    <div id="ticker-display" aria-label="Ticker Display">
                     </div>
                     <div class="ticker-inputs">
-                        <button title="Add Ticker" id="add-ticker"><i class="fa-solid fa-circle-plus"></i></button>
-                        <form id="ticker-form">
-                            <input id="ticker-input" placeholder="AAPL" type="text">
-                            <button type="submit">Add</button>
-
+                        <button title="Add Ticker" id="add-ticker" aria-label="Add Ticker"><i class="fa-solid fa-circle-plus"></i></button>
+                        <form id="ticker-form" aria-label="Add a Stock Ticker">
+                            <input id="ticker-input" placeholder="AAPL" type="text" aria-label="Ticker Symbol">
+                            <button type="submit" aria-label="Add ticker">Add</button>
                         </form>
                     </div>
-
                 </div>
-                <div class="primary">
+                <div class="primary" aria-label="Dashboard Main Content">
                     <div class="primary-left">
-                        <p id="author"></p>
+                        <p id="author" aria-label="Author"></p>
                     </div>
                     <div class="primary-center">
-                        <h1 id="time"></h1>
-                    
-                        <form method="get" action="https://www.google.com/search">
-                            <input placeholder="Ask Google" class="search" type="text" name="q" size="31" value="">
+                        <h1 id="time" aria-label="Current Time"></h1>
+                        <form method="get" action="https://www.google.com/search" aria-label="Google Search">
+                            <input placeholder="Ask Google" class="search" type="text" name="q" size="31" value="" aria-label="Ask Google">
                         </form>
-                        <div class="news">
+                        <div class="news" aria-label="Top Headlines">
                             <h1>Top Headlines</h1>
-                            <div id="headlines">
+                            <div id="headlines" aria-label="News Headlines">
                             </div>
-
                         </div>
                     </div>
                     <div class="primary-right">
-                        <div id="weather">
+                        <div id="weather" aria-label="Weather Information">
                         </div>
-                        <p id="city">Boston</p>
-
+                        <p id="city" aria-label="Current City">Boston</p>
                     </div>
-
                 </div>
             </div>
         </main>
