@@ -144,8 +144,8 @@ div.primary {
     display: flex;
     width: 100%;
     height: 100%;
-    margin-top: 30vh;
     justify-content: space-between;
+    align-items: center;
 }
 
 div.primary-left {
