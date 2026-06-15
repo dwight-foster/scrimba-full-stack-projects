@@ -1,0 +1,15 @@
+{
+  "name": "translation-app",
+  "version": "1.0.0",
+  "description": "LLM baesd app to translate text into different languages.",
+  "license": "ISC",
+  "author": "Dwight Foster",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
