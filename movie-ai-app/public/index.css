@@ -9,15 +9,24 @@ html, body {
 
 body {
     background-color: #000C36;
+
 }
 
-.header {
+.page-content {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    height: fit-content;
+}
+
+#header {
     display: flex;
     flex-direction: column;
-    height: 30vh;
     width: 100vw;
     align-items: center;
-    justify-content: center;
 }
 
 .header-image {
@@ -60,15 +69,48 @@ body {
     padding: 0.5rem;
     color: #FFFFFF;
     font-weight: 300;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .input-area:focus {
     outline: none;
 }
 
-.dark-text {
-    color: #05060C;
+.first-page {
+    text-align: center;
+    height: 4rem;
+    font-size: 1.125rem;
+    padding: 1.125rem 0;
+}
+
+.first-page::placeholder {
+    color: #000C36;
+}
+
+.radio-div {
+    margin-bottom: 2rem;
+}
+
+.radio-btn {
+    display: none;
+}
+
+.radio-label {
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
+    background-color: #3B4877;
+    font-size: 0.875rem;
+    font-family: "Roboto Slab", sans-serif;
+    margin-right: 0.25rem;
+}
+
+.radio-label:hover {
+    background-color: #29314e;
+    cursor: pointer;
+}
+
+.radio-btn:checked + .radio-label {
+    background-color: #29314e;
 }
 
 #submit-btn {
@@ -80,7 +122,10 @@ body {
    font-weight: bold;
    font-size: 1.875rem;
    cursor: pointer;
-   margin-top: 3rem;
+}
+
+.margin-top {
+    margin-top: 1em;
 }
 
 .output-text {
@@ -88,4 +133,12 @@ body {
     font-size: 1.125rem;
     height: fit-content;
     width: auto;
+}
+
+.movie-title {
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: bold;
+    font-family: 'Roboto Slab', sans-serif;
+    
 }

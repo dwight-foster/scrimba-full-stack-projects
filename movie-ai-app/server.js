@@ -15,14 +15,22 @@ app.use(express.json());
 
 
 app.post('/api/query', async (req, res) => {
-  const { favoritemovie, movieage, movietype } = req.body;
-  const query = `My favorite movie is ${favoritemovie}, I want something ${movieage}, and ${movietype}.`;
+  const {time, prefs} = req.body;
+  const query = `They have ${time} time` + prefs.map((pref, index) => {
+    const {favoritemovie, era, mood, filmperson} = pref;
+    return `Person ${index+1}'s favorite movie is ${favoritemovie}, they want something ${era}, and ${mood}. They would want to be stranded on an island with ${filmperson}.`
+  }).join('\n');
   try {
     const embedding = await createEmbedding(query);
     const matches = await findMatch(embedding, 3);
     const completion = await getChatCompletion(matches, query);
-    const html = marked.parse(completion);
-    res.status(200).json({message: html});
+    const { movies } = JSON.parse(completion);
+    const html = movies.map((movie) => {
+      const { name, description } = movie;
+      return { name: name, description: marked.parse(description) }
+    });
+    // const html = marked.parse(completion);
+    res.status(200).json({message: JSON.stringify(html)});
   } catch (e) {
     console.log(e);
     throw new Error(e);
