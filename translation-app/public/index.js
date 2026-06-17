@@ -10,7 +10,7 @@ const formBtn = document.getElementById('form-btn');
 translateForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (formBtn.textContent === 'Translate') {
-                const data = new FormData(translateForm);
+        const data = new FormData(translateForm);
         let output = {};
         for (const entry of data) {
             output[entry[0]] = entry[1]; 

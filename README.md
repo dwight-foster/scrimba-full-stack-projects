@@ -14,3 +14,4 @@ This is a repository with my solo projects from the Scrimba Full Stack Path.
 - Animation Async (MDN Async Tutorial: [Here](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Async_JS/Sequencing_animations))
 - GoldDigger (Node.js)
 - Translation App (AI Engineering)
+- Movie AI App (AI Engineering)

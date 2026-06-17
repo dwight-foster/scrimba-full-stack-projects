@@ -1,0 +1,19 @@
+{
+  "name": "movie-ai-app",
+  "version": "1.0.0",
+  "description": "App that uses rag and an openai llm to recommend movies",
+  "license": "ISC",
+  "author": "Dwight Foster",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dompurify": "^3.4.11",
+    "expres": "^0.0.5",
+    "express": "^5.2.1",
+    "marked": "^18.0.5"
+  }
+}

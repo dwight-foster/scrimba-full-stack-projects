@@ -1,0 +1,91 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000C36;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-image {
+    width: 99px;
+    height: 108px;
+}
+
+.header-title {
+    color: #FFFFFF;
+    font-size: 2.8rem;
+    margin-top: 0.5rem;
+    font-family: "Carter One", sans-serif;
+}
+
+#preference-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 3rem;
+}
+
+#input-section {
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+}
+
+.input-label {
+    font-size: 1rem;
+    font-family: "Roboto Slab", sans-serif;
+    margin-bottom: 1rem;
+}
+
+.input-area {
+    height: 5rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #3B4877;
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    color: #FFFFFF;
+    font-weight: 300;
+    margin-bottom: 4rem;
+}
+
+.input-area:focus {
+    outline: none;
+}
+
+.dark-text {
+    color: #05060C;
+}
+
+#submit-btn {
+   height: 4.4rem;
+   background-color: #51E08A;
+   color:#000C36;
+   border-radius: 10px;
+   font-family: "Roboto Slab", sans-serif;
+   font-weight: bold;
+   font-size: 1.875rem;
+   cursor: pointer;
+   margin-top: 3rem;
+}
+
+.output-text {
+    font-family: 'Roboto Slab';
+    font-size: 1.125rem;
+    height: fit-content;
+    width: auto;
+}
