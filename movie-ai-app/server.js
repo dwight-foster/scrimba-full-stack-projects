@@ -1,4 +1,5 @@
 import express from 'express';
+import 'dotenv/config';
 import { openai, supabase } from './utils/config.js';
 import { findMatch } from './utils/findMatch.js';
 import { createEmbedding } from './utils/createEmbedding.js';
@@ -26,8 +27,8 @@ app.post('/api/query', async (req, res) => {
     const completion = await getChatCompletion(matches, query);
     const { movies } = JSON.parse(completion);
     const html = movies.map((movie) => {
-      const { name, description } = movie;
-      return { name: name, description: marked.parse(description) }
+      const { name, year, description } = movie;
+      return { name: name, year: year, description: marked.parse(description) }
     });
     // const html = marked.parse(completion);
     res.status(200).json({message: JSON.stringify(html)});
@@ -37,6 +38,29 @@ app.post('/api/query', async (req, res) => {
   }
 
 });
+
+app.post('/api/img', async (req, res) => {
+  const {name} = req.body;
+  try {
+
+  
+    const url = `https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US&page=1`;
+    const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: process.env.TMDB_API_KEY
+    }
+    };
+
+    const movieRes = await fetch(url, options);
+    const movieJSON = await movieRes.json();
+    const imgURL = `https://image.tmdb.org/t/p/w185${movieJSON.results[0].poster_path}`;
+    res.status(200).json({url: imgURL});
+  } catch (err) {
+    throw new Error(err);
+  }
+})
 
 
 app.listen(port, () => {

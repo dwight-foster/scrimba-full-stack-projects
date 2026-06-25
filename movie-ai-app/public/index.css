@@ -142,3 +142,9 @@ body {
     font-family: 'Roboto Slab', sans-serif;
     
 }
+
+.movie-poster {
+    width: 100%;
+    height: auto;
+    display: block;
+}

@@ -11,9 +11,10 @@ export const movieSchema = {
                         type: 'object',
                         properties: {
                             name: {type: 'string'},
+                            year: {type: 'string'},
                             description: { type: 'string' }
                         },
-                        required: ['name', 'description']
+                        required: ['name', 'year', 'description']
                     },
                 },
             },
