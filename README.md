@@ -15,3 +15,4 @@ This is a repository with my solo projects from the Scrimba Full Stack Path.
 - GoldDigger (Node.js)
 - Translation App (AI Engineering)
 - Movie AI App (AI Engineering)
+- Restaurant Ordering App Remastered (Express.js)
