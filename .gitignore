@@ -18,3 +18,4 @@ wheels/
 node_modules
 package-lock.json
 .env
+*.db
