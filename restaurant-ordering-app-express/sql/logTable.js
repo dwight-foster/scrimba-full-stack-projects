@@ -14,4 +14,4 @@ async function logTable(name) {
 
 }
 
-logTable('cart');
+logTable('users');

@@ -1,0 +1,69 @@
+<html>
+    <head>
+       <link rel="stylesheet" href="index.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </head>
+    <body>
+        <div id="blur-overlay"></div>
+        <section class="header">
+            <div class="header-text">
+                <h1 id="restaurant-name">Jimmy's Diner</h1>
+                <h2 id="restaurant-slogan">The best burgers and pizzas in town.</h2>
+            </div>
+        </section>
+        <main>
+            <div class="welcome-message">
+                <h1>Welcome To Jimmy's Diner</h1>
+            </div>
+            <div class="options">
+                <form id="register-form">
+                    <h2>Register</h2>
+                    <input
+                        class="field-inputs"
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="NAME"
+                        title="Only letters"
+                        required
+                    >
+                    <input
+                        class="field-inputs"
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="EMAIL"
+                        required
+                    >
+                    <input
+                        class="field-inputs"
+                        id="username"
+                        name="username"
+                        type="text"
+                        placeholder="USERNAME"
+                        pattern="[A-Za-z0-9]+"
+                        title="Only letters and numbers are allowed"
+                        required
+                    >
+                    <input
+                        class="field-inputs"
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="PASSWORD"
+                        minlength="6"
+                        required
+                    >
+                    <button type="submit" class="primary-btn">Register</button>
+                </form>
+                <a target="_blank" class="link-btn" href="login.html">Back to login</a>
+
+            </div>
+
+        </main>
+        <script type="module" src="./js/register.js"></script>
+    </body>
+</html>

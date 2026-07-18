@@ -5,7 +5,7 @@ const scrollers = document.querySelectorAll('.scroller');
 const addTicker = document.getElementById('add-ticker');
 const tickerForm = document.getElementById('ticker-form');
 const tickerInput = document.getElementById('ticker-input');
-const token = "YOUR_API_KEY";
+const token = "d8c5r99r01qidic6g9t0d8c5r99r01qidic6g9tg";
 
 let stocks;
 console.log(localStorage.getItem('stocks'));
