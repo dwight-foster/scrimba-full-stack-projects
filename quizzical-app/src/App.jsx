@@ -2,6 +2,7 @@ import { useState, useEffect, useTransition } from 'react';
 import Welcome from "./components/Welcome"
 import Quiz from './components/Quiz'
 import he from 'he';
+import clsx from 'clsx';
 
 export default function App() {
     const [ questions, setQuestions ] = useState(null);
@@ -14,12 +15,18 @@ export default function App() {
                 .then(data => {
                     const results = data.results;
                     setQuestions(() => results.map((res) => {
+                        const idx = Math.floor(Math.random() * (res['incorrect_answers'].length + 1));
+                        const allAnswers = [
+                            ...res['incorrect_answers'].slice(0, idx),
+                            res['correct_answer'],
+                            ...res['incorrect_answers'].slice(idx)
+                        ];
                         return {
                             question: he.decode(res.question, {
                                         'isAttributeValue': true }),
-                            wrongAnswers: res['incorrect_answers'],
                             correctAnswer: res['correct_answer'],
-                            answeredCorrectly: false
+                            allAnswers:  allAnswers,
+                            usersAnswer: ''
                         }
                     }));
                 })
@@ -27,17 +34,22 @@ export default function App() {
             
 
     }, [isSubmitted])
-    
-    const questionElements = questions.map((question) => {
-        
-    })
+
+    function startQuiz() {
+        setIsQuiz(true);
+    }
+
+    function submitAnswers(formData) {
+        const data = Object.fromEntries(formData);
+        console.log(data);
+    }
 
     return (
         <main>
             <div className="blob blob-yellow"></div>
             <div className="blob blob-blue"></div>
             <section>
-                <Quiz />
+                {!isQuiz ? <Welcome startQuiz={startQuiz}/>: <Quiz submitAnswers={submitAnswers} questions={questions} isSubmitted={isSubmitted} />}
             </section>
         </main>
     )

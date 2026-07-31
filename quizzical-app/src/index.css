@@ -70,12 +70,14 @@ button.start-quiz {
     font-weight: 500;
     color: white;
     margin-top: 2em;
+    cursor: pointer;
 }
 
 /* Quiz page */
 
 .question {
     text-align: left;
+    max-width: 700px;
 }
 
 .question > h3 {
@@ -89,7 +91,7 @@ button.start-quiz {
 }
 
 .answer-options > input[type='radio'] {
-    visibility: hidden;
+    display: none;
 }
 
 .answer-options > label {
@@ -97,14 +99,15 @@ button.start-quiz {
     cursor: pointer;
     border: 1px solid #4D5B9E;
     border-radius: 8px;
-    padding: 3px 15px;
+    padding: 5px 20px;
     font-size: 0.85rem;
     font-weight: 500;
     color: #293264;
+    margin-right: 1em;
 }
 
-.answer-options > input[type='radio']:checked + label {
-    background-color: #293264;
+.answer-options > input[type='radio']:checked + label{
+    background-color: #D6DBF5;
 }
 
 hr {
@@ -123,4 +126,5 @@ hr {
     border-radius: 10px;
     margin-top: 2em;
     font-weight: bold;
+    cursor: pointer;
 }
