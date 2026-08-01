@@ -1,0 +1,104 @@
+import { useState, useEffect, useTransition } from 'react';
+import Welcome from "./components/Welcome"
+import Quiz from './components/Quiz'
+import he from 'he';
+import clsx from 'clsx';
+
+export default function App() {
+    const [ questions, setQuestions ] = useState([]);
+    const [ isQuiz, setIsQuiz ] = useState(false);
+    const [ isSubmitted, setIsSubmitted ] = useState(false);
+    useEffect(() =>  {
+        if (!isSubmitted) {
+            fetch('https://opentdb.com/api.php?amount=5')
+                .then(res => res.json()) 
+                .then(data => {
+                    const results = data.results;
+                    setQuestions(() => results.map((res) => {
+                        const idx = Math.floor(Math.random() * (res['incorrect_answers'].length + 1));
+                        const allAnswers = [
+                            ...res['incorrect_answers'].slice(0, idx),
+                            res['correct_answer'],
+                            ...res['incorrect_answers'].slice(idx)
+                        ].map((answer) => he.decode(answer, { isAttributeValue: true }));
+                        return {
+                            question: he.decode(res.question, {
+                                        'isAttributeValue': true }),
+                            correctAnswer: he.decode(res['correct_answer'], { isAttributeValue: true }),
+                            allAnswers:  allAnswers,
+                            usersAnswer: ''
+                        }
+                    }));
+                })
+                .catch((err) => console.error(err));
+        }
+            
+
+    }, [isSubmitted])
+
+    function startQuiz() {
+        setIsQuiz(true);
+    }
+
+    function submitAnswers(formData) {
+        const data = Object.fromEntries(formData);
+        setQuestions((questions) => (
+             questions.map((question) => (
+                {
+                ...question,
+                usersAnswer: data[question.question]
+            }))
+
+        ));
+        setIsSubmitted(true);
+    } 
+
+    function playAgain() {
+        setIsSubmitted(false);
+        setIsQuiz(false);
+    }
+
+    return (
+        <main>
+            <div className="blob blob-yellow"></div>
+            <div className="blob blob-blue"></div>
+            <section>
+                {!isQuiz ? <Welcome startQuiz={startQuiz}/>: <Quiz submitAnswers={submitAnswers} questions={questions} isSubmitted={isSubmitted} playAgain={playAgain} />}
+            </section>
+        </main>
+    )
+}
+
+
+/*
+    Scaffolding:
+    Home page has title, description and button
+    Button will be used to start the quiz
+    Button Functionality: When clicked button will run a function
+    that changes a state boolean variable to true. This will conditionally render
+    the quiz screen instead of home page.
+
+    Quiz screen: Each question will be displayed with the answers. The submit 
+    answers button will be at the bottom. 
+    Obtaining quiz questions: use the useeffect function to get it on the first go.
+    The dependency should be the isSubmitted but the function should only run 
+    if isSubmitted is false not when it is true. 
+
+    Data format should be: 
+    [{question: string, wrongAnswers: list[string], rightAnswer: string, answeredCorrectly: boolean}]
+    The answered correctly will not be used until the form is submitted. 
+    When the user clicks the submit button compare the answers with the right 
+    answer and change answeredcorrectly accordingly. Once the submit button is clicked
+    anther state isSubmitted with a boolean value should be set to true. 
+
+    Quiz screen post submit: 
+    Submit button should disappear. It should be replaced by the persons score
+    and a play again button. 
+    Each from item should have the correct answer highlighted in green
+    and if the person answered incorrectly it should be highlighted in red for their
+    answer. These should be conditionally rendered. If the person clicks play again
+    the questions state should be changed and the issubmitted state should be returned 
+    to false. 
+    
+
+*/
