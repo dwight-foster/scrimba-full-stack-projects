@@ -17,3 +17,4 @@ This is a repository with my solo projects from the Scrimba Full Stack Path.
 - Movie AI App (AI Engineering)
 - Restaurant Ordering App Remastered (Express.js)
 - Business Card (React.js Fundamentals)
+- Quizzical App (React.js Fundamentals)
