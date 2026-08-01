@@ -20,16 +20,17 @@ export default function App() {
                             ...res['incorrect_answers'].slice(0, idx),
                             res['correct_answer'],
                             ...res['incorrect_answers'].slice(idx)
-                        ];
+                        ].map((answer) => he.decode(answer, { isAttributeValue: true }));
                         return {
                             question: he.decode(res.question, {
                                         'isAttributeValue': true }),
-                            correctAnswer: res['correct_answer'],
+                            correctAnswer: he.decode(res['correct_answer'], { isAttributeValue: true }),
                             allAnswers:  allAnswers,
                             usersAnswer: ''
                         }
                     }));
                 })
+                .catch((err) => console.error(err));
         }
             
 
@@ -41,7 +42,20 @@ export default function App() {
 
     function submitAnswers(formData) {
         const data = Object.fromEntries(formData);
-        console.log(data);
+        setQuestions((questions) => (
+             questions.map((question) => (
+                {
+                ...question,
+                usersAnswer: data[question.question]
+            }))
+
+        ));
+        setIsSubmitted(true);
+    } 
+
+    function playAgain() {
+        setIsSubmitted(false);
+        setIsQuiz(false);
     }
 
     return (
@@ -49,7 +63,7 @@ export default function App() {
             <div className="blob blob-yellow"></div>
             <div className="blob blob-blue"></div>
             <section>
-                {!isQuiz ? <Welcome startQuiz={startQuiz}/>: <Quiz submitAnswers={submitAnswers} questions={questions} isSubmitted={isSubmitted} />}
+                {!isQuiz ? <Welcome startQuiz={startQuiz}/>: <Quiz submitAnswers={submitAnswers} questions={questions} isSubmitted={isSubmitted} playAgain={playAgain} />}
             </section>
         </main>
     )

@@ -1,23 +1,27 @@
 import clsx from 'clsx';
 
 export default function Quiz(props) {
-    const { submitAnswers, questions, isSubmitted } = props
+    const { submitAnswers, questions, isSubmitted, playAgain } = props
 
-    function getRadioElements(allAnswers,  name) {
+    const answeredCorrectly = questions.filter((question) => question.correctAnswer === question.usersAnswer).length;
 
-        return allAnswers.map((answer, index) => (
-            <div key={`${name}-${answer}-${index}`} className='answer-options'>
-                <input type='radio' id={answer} name={name} value={answer} disabled={isSubmitted}/>
-                 <label htmlFor={answer}>{answer}</label>
-            </div>
-        ))
+    function getRadioElements(allAnswers,  name, usersAnswer, correctAnswer) {
+
+        return allAnswers.map((answer, index ) => {
+            const isCorrect = correctAnswer === answer;
+            const answered = answer === usersAnswer;
+            const className = clsx(isSubmitted && isCorrect && 'correct', isSubmitted && !isCorrect && answered && 'incorrect', '');
+            return (
+                    <div key={`${name}-${answer}-${index}`} className='answer-options'>
+                        <input type='radio' id={answer} name={name} value={answer} disabled={!isCorrect && isSubmitted}/>
+                        <label className={className} htmlFor={answer}>{answer}</label>
+                    </div>
+                    )
+        })
 
     }
-    
     const questionElements = questions.map((question) => {
-        const isCorrect = question.correctAnswer === question.usersAnswer;
-        const className = clsx(isSubmitted && isCorrect && 'correct', isSubmitted && !isCorrect && 'incorrect', '');
-        const radioElements = getRadioElements(question.allAnswers, question.question);
+        const radioElements = getRadioElements(question.allAnswers, question.question, question.usersAnswer, question.correctAnswer);
         return (
                 <div key={question.question}>
                     <div className="question">
@@ -35,9 +39,15 @@ export default function Quiz(props) {
         <div>
             <form action={submitAnswers} className='quiz'>
                 {questionElements}
-                <button type='submit'>Check Answers</button>
+                {!isSubmitted && <button type='submit'>Check Answers</button>}
 
             </form>
+            {isSubmitted && 
+            <div className='submitted-container'>
+                <h3>You scored {answeredCorrectly}/5 correct answers</h3>
+                <button onClick={playAgain}>Play again</button>
+            </div>
+            }
         </div>
     )
 }

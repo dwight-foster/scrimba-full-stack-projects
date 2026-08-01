@@ -106,6 +106,18 @@ button.start-quiz {
     margin-right: 1em;
 }
 
+label.correct {
+    background-color: #94D7A2;
+}
+
+label.incorrect {
+    background-color: #F8BCBC;
+}
+
+.answer-options > input[type='radio']:disabled + label {
+    opacity: 50%;
+}
+
 .answer-options > input[type='radio']:checked + label{
     background-color: #D6DBF5;
 }
@@ -127,4 +139,28 @@ hr {
     margin-top: 2em;
     font-weight: bold;
     cursor: pointer;
+}
+
+div.submitted-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+div.submitted-container > button {
+    height: 35px;
+    width: 125px;
+    border: none;
+    background-color: #4D5B9E;
+    color: #DBDEF0;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 2em;
+}
+
+div.submitted-container > h3 {
+    color: #293264;
+    font-weight: bold;
 }
