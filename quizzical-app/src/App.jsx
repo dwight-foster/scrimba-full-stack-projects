@@ -5,7 +5,7 @@ import he from 'he';
 import clsx from 'clsx';
 
 export default function App() {
-    const [ questions, setQuestions ] = useState(null);
+    const [ questions, setQuestions ] = useState([]);
     const [ isQuiz, setIsQuiz ] = useState(false);
     const [ isSubmitted, setIsSubmitted ] = useState(false);
     useEffect(() =>  {

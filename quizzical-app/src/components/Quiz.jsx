@@ -5,47 +5,59 @@ export default function Quiz(props) {
 
     const answeredCorrectly = questions.filter((question) => question.correctAnswer === question.usersAnswer).length;
 
-    function getRadioElements(allAnswers,  name, usersAnswer, correctAnswer) {
+    function getRadioElements(allAnswers, name, usersAnswer, correctAnswer) {
 
-        return allAnswers.map((answer, index ) => {
+        return allAnswers.map((answer, index) => {
             const isCorrect = correctAnswer === answer;
             const answered = answer === usersAnswer;
             const className = clsx(isSubmitted && isCorrect && 'correct', isSubmitted && !isCorrect && answered && 'incorrect', '');
+            const id = `${name}-${index}`;
             return (
-                    <div key={`${name}-${answer}-${index}`} className='answer-options'>
-                        <input type='radio' id={answer} name={name} value={answer} disabled={!isCorrect && isSubmitted}/>
-                        <label className={className} htmlFor={answer}>{answer}</label>
-                    </div>
-                    )
+                <div key={id} className='answer-options'>
+                    <input
+                        type='radio'
+                        id={id}
+                        name={name}
+                        value={answer}
+                        disabled={!isCorrect && isSubmitted}
+                        defaultChecked={usersAnswer === answer}
+                    />
+                    <label className={className} htmlFor={id}>{answer}</label>
+                </div>
+            )
         })
 
     }
-    const questionElements = questions.map((question) => {
-        const radioElements = getRadioElements(question.allAnswers, question.question, question.usersAnswer, question.correctAnswer);
+    const questionElements = questions.map((question, qIndex) => {
+        const groupName = `q-${qIndex}`;
+        const labelId = `${groupName}-label`;
+        const radioElements = getRadioElements(question.allAnswers, groupName, question.usersAnswer, question.correctAnswer);
         return (
-                <div key={question.question}>
-                    <div className="question">
-                        <h3>{question.question}</h3>
-                        <div className="answer-options">
+            <div key={`q-${qIndex}`}>
+                <div className="question">
+                    <fieldset aria-labelledby={labelId}>
+                        <legend id={labelId}><h3>{question.question}</h3></legend>
+                        <div className="answer-options" role="radiogroup" aria-labelledby={labelId}>
                             {radioElements}
                         </div>
-                    </div>
-                    <hr></hr>
+                    </fieldset>
                 </div>
+                <hr></hr>
+            </div>
         )
     });
 
     return (
         <div>
-            <form action={submitAnswers} className='quiz'>
+            <form onSubmit={(e) => { e.preventDefault(); const fd = new FormData(e.target); submitAnswers(fd); }} className='quiz' aria-label="Quiz form">
                 {questionElements}
                 {!isSubmitted && <button type='submit'>Check Answers</button>}
 
             </form>
             {isSubmitted && 
-            <div className='submitted-container'>
+            <div className='submitted-container' role="status" aria-live="polite">
                 <h3>You scored {answeredCorrectly}/5 correct answers</h3>
-                <button onClick={playAgain}>Play again</button>
+                <button onClick={playAgain} aria-label="Play again">Play again</button>
             </div>
             }
         </div>
